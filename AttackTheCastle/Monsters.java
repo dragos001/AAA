@@ -1,17 +1,18 @@
 package AttackTheCastle;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Monsters {
+    int type;
+    boolean condition;
     double x;
     int y;
     int hp;
     int power;
     double speed;
-    Monsters(double x, int y, int hp, int power, double speed) {
+    Monsters(int type, boolean condition, double x, int y, int hp, int power, double speed) {
+        this.type = type;
+        this.condition = condition;
         this.x = x;
         this.y = y;
         this.hp = hp;
@@ -29,12 +30,20 @@ public class Monsters {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.red);
-        g.fillRect((int)x,y,10,10);
+        if(condition && type == 1)
+        {
+            g.setColor(Color.red);
+            g.fillRect((int)x,y,10,10);
+        }
+        if(condition && type == 2)
+        {
+            g.setColor(Color.blue);
+            g.fillRect((int)x,y,10,20);
+        }
+        if(condition && type == 3)
+        {
+            g.setColor(Color.green);
+            g.fillRect((int)x,y,10,25);
+        }
     }
-
-    /*public void spawnMonsters(int x, int y, int hp, int power, int speed) {
-        Monsters monster = new Monsters(x,y,hp,power,speed);
-        monster.listaMeaDeMonstrii.add(monster);
-    }*/
 }
